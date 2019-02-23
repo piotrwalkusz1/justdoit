@@ -1,3 +1,9 @@
+provider "google" {
+  project = "metal-mariner-231915"
+  region  = "europe-west2"
+  zone    = "europe-west2-a"
+}
+
 resource "google_container_cluster" "default" {
   name               = "todo-app-kubernetes"
   initial_node_count = 1
@@ -43,15 +49,16 @@ output "cluster_endpoint" {
 }
 
 output "cluster_client_certificate" {
-  value = "${google_container_cluster.default.master_auth.0.client_certificate}"
+  value     = "${google_container_cluster.default.master_auth.0.client_certificate}"
+  sensitive = true
 }
 
 output "cluster_client_key" {
-  value = "${google_container_cluster.default.master_auth.0.client_key}"
+  value     = "${google_container_cluster.default.master_auth.0.client_key}"
+  sensitive = true
 }
-
 
 output "cluster_ca_certificate" {
-  value = "${google_container_cluster.default.master_auth.0.cluster_ca_certificate}"
+  value     = "${google_container_cluster.default.master_auth.0.cluster_ca_certificate}"
+  sensitive = true
 }
-

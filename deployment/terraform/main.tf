@@ -1,11 +1,5 @@
 data "google_client_config" "current" {}
 
-provider "google" {
-  project = "metal-mariner-231915"
-  region  = "europe-west2"
-  zone    = "europe-west2-a"
-}
-
 provider "helm" {
   kubernetes {
     host                   = "${module.infrastructure.cluster_endpoint}"
