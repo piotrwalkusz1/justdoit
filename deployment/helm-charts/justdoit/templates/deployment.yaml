@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: justdoit
+  labels:
+    app: justdoit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: justdoit
+  template:
+    metadata:
+      labels:
+        app: justdoit
+    spec:
+      containers:
+      - name: justdoit
+        image: gcr.io/metal-mariner-231915/justdoit-service
+        ports:
+        - containerPort: 8080
