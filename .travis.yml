@@ -2,6 +2,8 @@ language: generic
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
+git:
+  depth: false
 services:
   - docker
 before_deploy:
